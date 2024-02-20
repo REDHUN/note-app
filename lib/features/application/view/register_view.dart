@@ -1,4 +1,5 @@
-import 'package:firebaseauthclean/features/application/bloc/auth_bloc.dart';
+import 'package:firebaseauthclean/features/application/bloc/authbloc/auth_bloc.dart';
+import 'package:firebaseauthclean/features/application/services/colors.dart';
 import 'package:firebaseauthclean/features/application/widgets/customtextformfiled.dart';
 import 'package:firebaseauthclean/features/domain/entities/user_entities.dart';
 import 'package:flutter/material.dart';
@@ -42,14 +43,14 @@ class _RegisterPageState extends State<RegisterPage> {
     return BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
       if (state is Authenticated) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/newnote', (route) => false);
         });
       }
 
       return Scaffold(
           appBar: AppBar(
-            iconTheme: IconThemeData(color: Colors.white),
-            backgroundColor: const Color(0xfff263147),
+            backgroundColor: AppColor.appBarColor,
           ),
           body: Container(
               padding: EdgeInsets.symmetric(horizontal: 25),
@@ -112,7 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             width: 250,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: Colors.orange),
+                                color: AppColor.btnColor),
                             child: Center(
                               child: Text(
                                 "Register",

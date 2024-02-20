@@ -1,3 +1,4 @@
+import 'package:firebaseauthclean/features/application/services/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -10,7 +11,7 @@ class CustomTextFormField extends StatefulWidget {
   final String? Function(String?)? validator;
   final InputBorder? enabledBorder;
   final InputBorder? focusedBorder;
-  final TextStyle?errorStyle;
+  final TextStyle? errorStyle;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final type;
@@ -20,11 +21,11 @@ class CustomTextFormField extends StatefulWidget {
     Key? key,
     this.hintstyle,
     this.errorStyle,
-    this.readOnly=false,
+    this.readOnly = false,
     this.style,
     required this.controller,
-    this.maxlines=1,
-    this.type=TextInputType.text,
+    this.maxlines = 1,
+    this.type = TextInputType.text,
     required this.hintText,
     this.obscureText = false,
     this.validator,
@@ -44,9 +45,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
       readOnly: widget.readOnly,
-      style:Theme.of(context).textTheme.bodySmall ,
+      style: Theme.of(context).textTheme.bodySmall,
       maxLines: widget.maxlines,
       keyboardType: widget.type,
       controller: widget.controller,
@@ -55,24 +55,25 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         hintStyle: Theme.of(context).textTheme.bodySmall,
         hintText: widget.hintText,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.white)
-        ),
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: AppColor.textFiledBorder)),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.white)
-        ),
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: AppColor.textFiledBorder)),
         prefixIcon: widget.prefixIcon,
-        suffixIcon: widget.obscureText ? IconButton(
-          icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility,
-
-          color: Colors.white,),
-          onPressed: () {
-            setState(() {
-              _obscureText = !_obscureText;
-            });
-          },
-        ) : widget.suffixIcon,
+        suffixIcon: widget.obscureText
+            ? IconButton(
+                icon: Icon(
+                  _obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: AppColor.textColor,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+              )
+            : widget.suffixIcon,
       ),
       obscureText: widget.obscureText && _obscureText,
       validator: widget.validator,

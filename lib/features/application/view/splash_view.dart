@@ -1,6 +1,7 @@
-import 'package:firebaseauthclean/features/application/bloc/auth_bloc.dart';
+import 'package:firebaseauthclean/features/application/bloc/authbloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashPageWrapper extends StatelessWidget {
   const SplashPageWrapper({super.key});
@@ -31,9 +32,9 @@ class SplashPage extends StatelessWidget {
       },
       child: Scaffold(
         body: Container(
-          height: double.infinity,
+          height: double.infinity / 2,
           width: double.infinity,
-          // child: Image.asset('assets/images/splash.png'),
+          child: Lottie.asset('assets/json/note_loading.json'),
         ),
       ),
     );
